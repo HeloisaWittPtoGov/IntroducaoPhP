@@ -17,5 +17,12 @@ if($action == "calcularMedia"){
   } else{
     echo "Reprovado \n";
   }
-  echo $media;
+
+  $nrNotas = [$nrNota1, $nrNota2, $nrNota3, $nrNota4];
+  $maiorNota = max($nrNotas);
+  $menorNota = min($nrNotas);
+
+  echo "A média é:".$media."\n";
+  echo "A maior nota é:".$maiorNota."\n";
+  echo "A menor nota é:".$menorNota."\n";
 }
