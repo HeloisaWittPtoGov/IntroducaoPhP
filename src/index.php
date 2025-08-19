@@ -23,6 +23,23 @@
           }
         )
       })
+
+      $("#BtnCalcularMedia").on("click", function(){
+        $.post(
+          "controllerAction.php",
+          {
+            action: "calcularMedia",
+            nota1: $("#nrNota1").val(),
+            nota2: $("#nrNota2").val(),
+            nota3: $("#nrNota3").val(),
+            nota4: $("#nrNota4").val(),
+          },
+          function(response){
+            console.log(response)
+          }
+
+        )
+      })
     })
   </script>
 </head>
@@ -71,40 +88,40 @@
         </tr>
       </table>
     </div>
+  </form>
+  <form action="calcularMedia">
     <div>
-      <form action="calcularMedia">
-        <table>
-          <tr>
-            <td style="text-align: right; width: 120px">
-              Nota 1:
-            </td>
-            <td>
-              <input type="number" id="nrNota1" style="width: 80px;">
-            </td>
-            <td style="text-align: right; width: 120px">
-              Nota 2:
-            </td>
-            <td>
-              <input type="nember" id="nrNota2" style="width: 80px;">
-            </td>
-            <td style="text-align: right; width: 120px;">
-              Nota 3:
-            </td>
-            <td>
-              <input type="number" id="nrNota3" style="width: 80px;">
-            </td>
-            <td style="text-align: right; width: 120px;">
-              Nota 4:
-            </td>
-            <td>
-              <input type="number" id="nrNota4" style="width: 80px;">
-            </td>
-            <td>
-              <button type="button" id="BtnCalcularMedia">Calcular</button>
-            </td>
-          </tr>
-        </table>
-      </form>
+      <table>
+        <tr>
+          <td style="text-align: right; width: 120px">
+            Nota 1:
+          </td>
+          <td>
+            <input type="number" id="nrNota1" style="width: 80px;">
+          </td>
+          <td style="text-align: right; width: 120px">
+            Nota 2:
+          </td>
+          <td>
+            <input type="nember" id="nrNota2" style="width: 80px;">
+          </td>
+          <td style="text-align: right; width: 120px;">
+            Nota 3:
+          </td>
+          <td>
+            <input type="number" id="nrNota3" style="width: 80px;">
+          </td>
+          <td style="text-align: right; width: 120px;">
+            Nota 4:
+          </td>
+          <td>
+            <input type="number" id="nrNota4" style="width: 80px;">
+          </td>
+          <td>
+            <button type="button" id="BtnCalcularMedia">Calcular</button>
+          </td>
+        </tr>
+      </table>
     </div>
   </form>
 </body>
