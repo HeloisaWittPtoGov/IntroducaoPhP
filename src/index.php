@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="ISO8859-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
@@ -36,8 +36,22 @@
           },
           function(response){
             console.log(response)
-          }
+          },
+          'json'
+        )
+      })
 
+      $("#BtnCalcularIMC").on("click", function(){
+        $.post(
+          "controllerAction.php",
+          {
+            action: "calcularIMC",
+            altura: $("#nrAltura").val(),
+            peso: $("#nrPeso").val(),
+          },
+          function(response){
+            console.log(response)
+          }
         )
       })
     })
@@ -73,9 +87,9 @@
           </td>
           <td>
             <select name="flGebero" id="flGenero">
-              <option value="Masc">Masculino</option>
-              <option value="Fem"> Feminino</option>
-              <option value="Ot">Outro</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino"> Feminino</option>
+              <option value="Outro">Outro</option>
             </select>
           </td>
         </tr>
@@ -89,7 +103,7 @@
       </table>
     </div>
   </form>
-  <form action="calcularMedia">
+  <form id="frmCadastroNotas" action="controllerAction" method="post">
     <div>
       <table>
         <tr>
@@ -103,7 +117,7 @@
             Nota 2:
           </td>
           <td>
-            <input type="nember" id="nrNota2" style="width: 80px;">
+            <input type="number" id="nrNota2" style="width: 80px;">
           </td>
           <td style="text-align: right; width: 120px;">
             Nota 3:
@@ -118,7 +132,30 @@
             <input type="number" id="nrNota4" style="width: 80px;">
           </td>
           <td>
-            <button type="button" id="BtnCalcularMedia">Calcular</button>
+            <button type="button" id="BtnCalcularMedia">Calcular Media</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+  <form id="frmCadastroIMC" action="controllerAction" method="post">
+    <div>
+      <table>
+        <tr>
+          <td style="text-align: right; width: 120px;">
+            Altura:
+          </td>
+          <td>
+            <input type="number" id="nrAltura" style="width: 80px;">
+          </td>
+          <td style="text-align: right; width: 120px;">
+            Peso:
+          </td>
+          <td>
+            <input type="number" id="nrPeso" style="width: 80px;">
+          </td>
+          <td>
+            <button type="button" id="BtnCalcularIMC">Calcular IMC</button>
           </td>
         </tr>
       </table>

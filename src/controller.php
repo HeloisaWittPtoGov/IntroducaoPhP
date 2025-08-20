@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Sao_Paulo');
 
 $nmPessoa = $_POST['nome'];
 $strIdade = $_POST['idade'];
@@ -25,12 +26,14 @@ if($nrIdade >= 18){
   $strMaiorIdade = "Menor de idade";
 }
 
-echo "teste \n";
-echo $nmPessoa."\n";
-echo $nrIdade."\n";
-echo $flGenero."\n";
-echo $nrIdadeDez."\n";
-echo $strMaiorIdade."\n";
-echo $_SERVER["SERVER_ADDR"]."\n";
-echo $_SERVER["HTTP_USER_AGENT"]."\n";
-echo $dataHora."\n";
+$arrInfos = [
+  "Nome:".$nmPessoa,
+  "Idade:".$strIdade,
+  "Genero:".$flGenero, 
+  "Idade daqui 10 anos:".$nrIdadeDez, 
+  "IP:".$_SERVER["SERVER_ADDR"], 
+  "User Agent:".$_SERVER["HTTP_USER_AGENT"],
+  "Data e Hora:".$dataHora];
+
+
+echo json_encode($arrInfos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
