@@ -54,6 +54,20 @@
           }
         )
       })
+
+      $("#BtnCalcularData").on("click", function(){
+        $.post(
+          "controllerAction.php",
+          {
+            action: "calcularDataRestante",
+            dataAlvo: $("#dtAlvo").val().
+          }
+          function(response){
+            console.log(response)
+          }
+        )
+
+      })
     })
   </script>
 </head>
@@ -111,7 +125,7 @@
             Nota 1:
           </td>
           <td>
-            <input type="number" id="nrNota1" style="width: 80px;">
+            <input type="number" id="nrNota1" style="width: 95px;">
           </td>
           <td style="text-align: right; width: 120px">
             Nota 2:
@@ -146,7 +160,7 @@
             Altura:
           </td>
           <td>
-            <input type="number" id="nrAltura" style="width: 80px;">
+            <input type="number" id="nrAltura" style="width: 95px;">
           </td>
           <td style="text-align: right; width: 120px;">
             Peso:
@@ -156,6 +170,23 @@
           </td>
           <td>
             <button type="button" id="BtnCalcularIMC">Calcular IMC</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+  <form action="controllerAction" method="post">
+    <div>
+      <table>
+        <tr>
+          <td style="text-align:right; width: 120px;">
+              Data Alvo:
+          </td>
+          <td>
+            <input id="dtAlvo" type="date" style="width: 95px;">
+          </td>
+          <td>
+            <button type="button" id="BtnCalcularData">Calcular</button>
           </td>
         </tr>
       </table>
