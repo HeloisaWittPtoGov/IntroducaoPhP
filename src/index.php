@@ -20,7 +20,8 @@
           },
           function(response) { // Função de retorno
             console.log(response)
-          }
+          },
+          'json'
         )
       })
 
@@ -93,7 +94,7 @@
             Idade:
           </td>
           <td>
-            <input id="nrIdade" name="nrIdade" style="width: 150px;">
+            <input id="nrIdade" type="number" name="nrIdade" style="width: 150px;">
           </td>
         </tr>
       </table>
