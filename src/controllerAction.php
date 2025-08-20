@@ -40,10 +40,27 @@ if($action == "calcularMedia"){
   echo json_encode($arrInfosNotas);
 
 } elseif($action == "calcularIMC"){
-   $strSituacao;
+   $nrPesoIdeal  = 0;
+   $strSituacao ="";
    $nrIMC = $nrPeso/($nrAltura*$nrAltura);
    if($nrIMC < 18.5){
+      $strSituacao = "Abaixo do Peso";
+     }elseif($nrIMC < 25){
+      $strSituacao = "Peso Normal";
+    } elseif($nrIMC < 30){
+      $strSituacao = "Sobrepeso";
+    } else{
+      $strSituacao = "Obesidade";
+    }
+    
+    $nrPesoIdeal = 22 * ($nrAltura ^ 2);
 
-   echo $nrIMC;
-}
+    $arrInfosIMC = [
+      'imc' => utf8_encode("IMC : ".$nrIMC),
+      'situacao' => utf8_encode ('Situacao: '.$strSituacao),
+      'pesoIdeal' => utf8_encode ('Peso Ideal: '.$nrPesoIdeal)
+    ];
+
+    echo json_encode($arrInfosIMC);
+
 }
