@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Sao_Paulo');
 
 $action = $_POST['action'];
 $nrNota1 = $_POST["nota1"];
@@ -7,6 +8,9 @@ $nrNota3 = $_POST["nota3"];
 $nrNota4 = $_POST["nota4"];  
 $nrAltura = $_POST["altura"];
 $nrPeso = $_POST["peso"];
+$dtAlvo = $_POST["dataAlvo"];
+$hrAlvo = $_POST["horaAlvo"];
+
 
 
 if($action == "calcularMedia"){
@@ -63,4 +67,27 @@ if($action == "calcularMedia"){
 
     echo json_encode($arrInfosIMC);
 
+  } elseif($action == "calcularDataRestante"){
+    $dtHrAtual = new DateTime('now');
+    $dataHoraAlvo = new DateTime($dtAlvo." ".$hrAlvo);
+    $nrDiferencaDias = $dtHrAtual->diff($dataHoraAlvo);
+    
+    
+  $arrInfosData = [
+    'totalDias'=>  utf8_encode ($nrDiferencaDias -> days),
+    'anos' =>  utf8_encode ($nrDiferencaDias -> y),
+    'meses' =>  utf8_encode ($nrDiferencaDias -> m),
+    'dias' =>  utf8_encode ($nrDiferencaDias -> d),
+    'horas' =>  utf8_encode ($nrDiferencaDias -> h),
+    'minutos' =>  utf8_encode ($nrDiferencaDias -> i),
+    'segundos' =>  utf8_encode ($nrDiferencaDias -> s),
+  
+  ];
+  if($dataHoraAlvo < $dtHrAtual){
+    $arrInfosData['situacao'] = utf8_encode("A data informada já passou");
+  };
+
+  echo json_encode($arrInfosData);
 }
+
+

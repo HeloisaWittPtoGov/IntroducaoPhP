@@ -51,7 +51,8 @@
           },
           function(response){
             console.log(response)
-          }
+          },
+          'json'
         )
       })
 
@@ -60,11 +61,13 @@
           "controllerAction.php",
           {
             action: "calcularDataRestante",
-            dataAlvo: $("#dtAlvo").val().
-          }
+            dataAlvo: $("#dtAlvo").val(),
+            horaAlvo: $("#hrAlvo").val(),
+          },
           function(response){
             console.log(response)
-          }
+          },
+          'json'
         )
 
       })
@@ -184,6 +187,12 @@
           </td>
           <td>
             <input id="dtAlvo" type="date" style="width: 95px;">
+          </td>
+          <td style="text-align: right; width: 120px;">
+            Horario Alvo:
+          </td>
+          <td>
+            <input type="time" id="hrAlvo" style="width: 80px;">
           </td>
           <td>
             <button type="button" id="BtnCalcularData">Calcular</button>
